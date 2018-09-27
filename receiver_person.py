@@ -17,13 +17,14 @@ class Receiver(Person):
     def get_key(self):
         return self.key
 
-    def operate_cipher(self, message, cipher, s):
-        if cipher.__str__() == "Affine":
+    def operate_cipher(self, message, s):
+        if s.get_cipher().__str__() == "Affine":
             key_1, key_2 = s.get_key()
             print('Sender used keys: ', key_1, key_2)
-            cipher.decode(message, key_1, key_2)
+            return s.get_cipher().decode(message, key_1, key_2)
 
         else:
             key = s.get_key()
             print('Sender used key: ', key)
-            cipher.decode(message, key)
+            return s.get_cipher().decode(message, key)
+             

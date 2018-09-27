@@ -28,7 +28,9 @@ class Affine(Cipher):
 
     def generate_keys(self):
         m_key = Multiplicative().generate_keys()
+        print(m_key)
         c_key = Caesar().generate_keys()
+        print(c_key)
         print('Multiplicative key: ', m_key, 'Caesar key: ', c_key)
         return m_key, c_key
 
