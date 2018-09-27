@@ -9,18 +9,24 @@ from hacker import *
 
 def main():
 
-    s = Sender()
+    #s = Sender()
     r = Receiver()
 
     message = input('Type in message to send: ')
     cipher = choose_cipher()
 
-    encoded_message = s.operate_cipher(message, cipher)
+    s = Sender(cipher)
+    #r = Receiver(cipher)
 
-    #Hacker().super_hack(encoded_message, cipher)
+    encoded_message = s.operate_cipher(message)
+    print("Encoded message in main", encoded_message)
+
+    print(s.get_key())
+    Hacker().super_hack(encoded_message, cipher)
 
 
-    decoded_message = Receiver().operate_cipher(encoded_message, cipher, s)
+    decoded_message = r.operate_cipher(encoded_message, s)
+    print('Decoded message in main', decoded_message)
 
 
 
